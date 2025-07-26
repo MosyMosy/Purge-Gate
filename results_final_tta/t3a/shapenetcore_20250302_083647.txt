@@ -1,0 +1,102 @@
+BETA 0.9
+BN_reset False
+LR 0.005
+WD 0.5
+alpha 0.0
+baseline tent
+batch_size 32
+batch_size_tta 1
+bftt3d_alpha 1000
+bftt3d_beta 100
+bftt3d_dim 72
+bftt3d_gamma 205
+bftt3d_k 120
+bftt3d_stages 3
+ckpts checkpoints/shapenet_src_only.pth
+config cfgs/baselines/shapenet/tta_t3a.yaml
+cyclic False
+debug False
+deterministic False
+disable_bn_adaptation False
+distributed False
+exp_name default
+experiment_path ./experiments/tta_t3a/shapenet/default
+finetune_model False
+fold -1
+grad_steps 0
+group_norm False
+jt False
+launcher none
+local_rank 0
+log_name tta_t3a
+loss cd1
+mask_ratio 0.9
+method t3a
+mode None
+num_classes 55
+num_workers 8
+online False
+only_cls False
+only_unmasked False
+partnet_cls False
+prune_size_list [0, 2, 4, 8, 16]
+resume False
+scratch_model False
+seed 0
+severity 5
+shot -1
+shuffle True
+split test
+start_ckpts None
+stride_step 1
+sync_bn False
+t3a_filter_k -1
+test False
+test_source False
+test_source_rotnet False
+tfboard_path ./experiments/tta_t3a/shapenet/TFBoard/default
+train_aug False
+train_tttrot False
+train_with_prune False
+tta False
+tta_dua False
+tta_rot False
+tta_seg False
+use_gpu True
+val_freq 1
+visualize_data False
+vote False
+way -1
+
+
+--- COPYING CONFIGURATION ---
+
+
+
+{'optimizer': {'type': 'AdamW', 'kwargs': {'lr': 1e-07, 'weight_decay': 0.05}}, 'scheduler': {'type': 'function'}, 'dataset': {'name': 'shapenetcore', 'train': {'_base_': {'NAME': 'ShapeNetCore', 'ROOT': '/export/datasets/public/3d/tta/clean/shapenetcore'}, 'others': {'subset': 'train', 'bs': 32}}, 'val': {'_base_': {'NAME': 'ShapeNetCore', 'ROOT': '/export/datasets/public/3d/tta/clean/shapenetcore'}, 'others': {'subset': 'test', 'bs': 64}}, 'test': {'_base_': {'NAME': 'ShapeNetCore', 'ROOT': '/export/datasets/public/3d/tta/clean/shapenetcore'}, 'others': {'subset': 'test', 'bs': 32}}}, 'model': {'NAME': 'Point_MAE', 'group_size': 32, 'num_group': 64, 'loss': 'cdl2', 'num_hid_cls_layers': 2, 'group_norm': False, 'regularize': False, 'transformer_config': {'mask_ratio': 0.0, 'mask_type': 'rand', 'trans_dim': 384, 'encoder_dims': 384, 'depth': 12, 'drop_path_rate': 0.1, 'num_heads': 6, 'decoder_depth': 4, 'decoder_num_heads': 6}, 'cls_dim': 55}, 'npoints': 1024, 'total_bs': 32, 'step_per_update': 1, 'max_epoch': 1, 'grad_norm_clip': 10, 'tta_dataset_path': '/export/datasets/public/Point_Cloud_Processing/TTA/Corrupt/shapenetcore_c/', 'normal': False}
+
+#############################
+#############################
+
+
+All Corruptions: ['uniform', 'gaussian', 'background', 'impulse', 'upsampling', 'distortion_rbf', 'distortion_rbf_inv', 'density', 'density_inc', 'shear', 'rotation', 'cutout', 'distortion', 'occlusion', 'lidar']
+
+TTA Results for Dataset: shapenetcore
+
+Checkpoint Used: checkpoints/shapenet_src_only.pth
+
+66.67
+64.253
+13.02
+59.77
+67.021
+65.14
+64.886
+70.402
+66.67
+65.978
+54.956
+69.428
+63.785
+10.067
+10.594
